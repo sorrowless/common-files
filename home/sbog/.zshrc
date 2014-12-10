@@ -37,8 +37,14 @@ case $TERM in
     ;;
 esac
 
+# History options
+export HISTSIZE=2000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+setopt inc_append_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
+
 setopt noflowcontrol
 setopt promptsubst
 
@@ -75,5 +81,14 @@ fi
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
+
+# Show dots whem search with autoexpand go slowly
+expand-or-complete-with-dots() {
+  echo -n "\e[31m...\e[0m"
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
 
 #unset GREP_OPTIONS
