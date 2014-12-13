@@ -1,41 +1,19 @@
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-case $TERM in
-    rxvt*|xterm*)
-        bindkey "^[[7~" beginning-of-line #Home key
-        bindkey "^[[8~" end-of-line #End key
-        bindkey "^[[3~" delete-char #Del key
-        bindkey "^[[A" history-beginning-search-backward #Up Arrow
-        bindkey "^[[B" history-beginning-search-forward #Down Arrow
-        bindkey "^[Oc" forward-word # control + right arrow
-        bindkey "^[Od" backward-word # control + left arrow
-        bindkey "^H" backward-kill-word # control + backspace
-        bindkey "^[[3^" kill-word # control + delete
-    ;;
-
-    linux)
-        bindkey "^[[1~" beginning-of-line #Home key
-        bindkey "^[[4~" end-of-line #End key
-        bindkey "^[[3~" delete-char #Del key
-        bindkey "^[[A" history-beginning-search-backward
-        bindkey "^[[B" history-beginning-search-forward
-    ;;
-
-    screen|screen-*)
-        bindkey "^[[1~" beginning-of-line #Home key
-        bindkey "^[[4~" end-of-line #End key
-        bindkey "^[[3~" delete-char #Del key
-        bindkey "^[[A" history-beginning-search-backward #Up Arrow
-        bindkey "^[[B" history-beginning-search-forward #Down Arrow
-        bindkey "^[Oc" forward-word # control + right arrow
-        bindkey "^[OC" forward-word # control + right arrow
-        bindkey "^[Od" backward-word # control + left arrow
-        bindkey "^[OD" backward-word # control + left arrow
-        bindkey "^H" backward-kill-word # control + backspace
-        bindkey "^[[3^" kill-word # control + delete
-    ;;
-esac
+autoload zkbd
+[[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
+[[ ! -f ~/.zkbd/xterm-:0.0 ]] && zkbd
+source  ~/.zkbd/xterm-:0.0
+#setup key accordingly
+[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
 # History options
 export HISTSIZE=2000
