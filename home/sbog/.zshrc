@@ -62,7 +62,7 @@ zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
 
 autoload -U promptinit
 promptinit
-prompt adam2
+prompt adam2 cyan blue cyan black
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
