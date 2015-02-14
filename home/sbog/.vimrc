@@ -10,11 +10,11 @@ set softtabstop=4
 set smarttab
 
 " Linebreak on 500 characters
-set lbr
-set tw=80
+" set lbr
+" set tw=80
 set ai "Auto indent - copy indentation from previous line
 set si "Smart indent - insert one more indent in some cases
-set wrap "Wrap lines
+" set wrap "Wrap lines
 
 set encoding=utf-8
 

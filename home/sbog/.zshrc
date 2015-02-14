@@ -24,6 +24,8 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 
 setopt noflowcontrol
+# if you will not set promptsubst then your prompt will be computed only one time
+# when it will be set first time
 setopt promptsubst
 
 autoload -Uz compinit
@@ -38,9 +40,39 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
 
-autoload -U promptinit
-promptinit
-prompt adam2 cyan blue cyan black
+#autoload -U promptinit
+#promptinit
+#prompt adam2 cyan blue cyan black
+autoload -U colors && colors
+
+function who_am_i {
+    # this function shows who I am and where I'm sitting now
+    # %n is $USERNAME variable. %m is The hostname up to the first ‘.’
+    echo "%{$fg[magenta]%}%n%{$reset_color%} %{$fg[white]%}at%{$reset_color%} %{$fg[yellow]%}%m%{$reset_color%}"
+}
+
+function happy_sad {
+    # next line is just ternary operator in zsh. It shows ^_^ if last command was true
+    # and o_O if it was false
+    echo "%(?.%{$fg[green]%}^_^%{$reset_color%}.%{$fg[red]%}o_O%{$reset_color%})"
+}
+
+function battshow {
+    # shows how many battery remains in percentage
+    echo "$(acpi | awk '{ print $4}')"
+}
+
+function gitbranch {
+    # find current git branch
+    local ret="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+    # and test that it is not null. If not null - then print it.
+    [ $ret ] && echo "%{$fg[white]%}on git branch%{$reset_color%} [%{$fg[red]%}$ret%{$reset_color%}]%{$fg[white]%},%{$reset_color%}"
+}
+# it MUST be in singlequotes. Otherwise, promptsubst will not be working
+PROMPT='
+$(who_am_i) %{$fg[white]%}in%{$reset_color%} %{$fg_no_bold[cyan]%}%d%{$reset_color%}
+$(happy_sad) -> '
+RPS1='$(gitbranch)%{$fg[white]%} battery%{$reset_color%} $(battshow)%%'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -54,6 +86,9 @@ alias ln='ln -v'
 alias chmod="chmod -c"
 alias chown="chown -c"
 alias ip='ip -4 -o'
+alias du='du -hc'
+alias df='df -h'
+alias svim='sudo vim'
 if command -v colordiff > /dev/null 2>&1; then
     alias diff="colordiff -Nuar"
 else
