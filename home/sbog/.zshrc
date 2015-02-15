@@ -60,12 +60,13 @@ function happy_sad {
 function battshow {
     # shows how many battery remains in percentage
     local ret="$(acpi)"
+    [ $ret ] || return
     local percent="$(echo $ret | awk '{ print $4}')"
     if echo $ret | grep -q "Discharging"
     then
-      echo "▾$percent"
+      echo "%{$fg[white]%}battery%{$reset_color%} ▾$percent%%"
     else
-      echo "▴$percent"
+      echo "%{$fg[white]%}battery%{$reset_color%} ▴$percent%%"
     fi
 }
 
@@ -79,7 +80,7 @@ function gitbranch {
 PROMPT='
 $(who_am_i) %{$fg[white]%}in%{$reset_color%} %{$fg_no_bold[cyan]%}%d%{$reset_color%}
 $(happy_sad) -> '
-RPS1='$(gitbranch)%{$fg[white]%} battery%{$reset_color%} $(battshow)%%'
+RPS1='$(gitbranch) $(battshow)'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
