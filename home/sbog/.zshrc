@@ -59,7 +59,14 @@ function happy_sad {
 
 function battshow {
     # shows how many battery remains in percentage
-    echo "$(acpi | awk '{ print $4}')"
+    local ret="$(acpi)"
+    local percent="$(echo $ret | awk '{ print $4}')"
+    if echo $ret | grep -q "Discharging"
+    then
+      echo "▾$percent"
+    else
+      echo "▴$percent"
+    fi
 }
 
 function gitbranch {
