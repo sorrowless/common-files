@@ -2,9 +2,9 @@
 set expandtab
 
 " 1 tab == 4 spaces
-set tabstop=4
-set shiftwidth=4 
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " Be smart when using tabs ;)
 set smarttab
@@ -12,8 +12,8 @@ set smarttab
 " Linebreak on 500 characters
 " set lbr
 " set tw=80
-set ai "Auto indent - copy indentation from previous line
-set si "Smart indent - insert one more indent in some cases
+" set ai "Auto indent - copy indentation from previous line
+" set si "Smart indent - insert one more indent in some cases
 " set wrap "Wrap lines
 
 set encoding=utf-8
