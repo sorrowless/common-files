@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=setxkbmap
+Comment=
+Exec=setxkbmap -model pc104 -layout us,ru -variant , -option grp:caps_toggle
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false
+
