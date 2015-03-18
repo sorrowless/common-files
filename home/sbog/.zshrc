@@ -107,4 +107,7 @@ alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias feh='feh -x -F -Y'
 
+# VirtualenvWrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
 #unset GREP_OPTIONS
