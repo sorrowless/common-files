@@ -1,0 +1,118 @@
+artwork.cache.period 48
+artwork.cache_reset_time 1427492415
+artwork.enable_albumartorg 1
+artwork.enable_embedded 1
+artwork.enable_lastfm 1
+artwork.enable_localfolder 1
+artwork.enable_wos 0
+artwork.filemask *cover*.jpg;*front*.jpg;*folder*.jpg;*cover*.png;*front*.png;*folder*.png
+artwork.scale_towards_longer 1
+cli_add_playlist_name Default
+cli_add_to_specific_playlist 1
+close_send_to_tray 1
+deadbeef_version 0.6.2
+filechooser.lastdir file:///data/music/my-music/Other/Dire%20Straits/3.%20Albums%20Compilations
+gtkui.autoresize_columns 1
+gtkui.embolden_current_track 1
+gtkui.eq.visible 0
+gtkui.hide_tray_icon 0
+gtkui.layout.0.6.2 vsplitter pos=27 locked=1 {hbox expand="0 1 0" fill="0 1 0" homogeneous=0 {playtb {} seekbar {} volumebar {} } hsplitter pos=231 locked=1 {vsplitter pos=232 locked=1 {coverart {} pltbrowser {} } tabbed_playlist hideheaders=0 {} } } 
+gtkui.mmb_delete_playlist 1
+gtkui.name_playlist_from_folder 1
+gtkui.statusbar.visible 1
+gtkui.tabscroll 0
+gtkui.titlebar_playing %a - %t - DeaDBeeF-%V
+gtkui.titlebar_stopped DeaDBeeF-%V
+gui_plugin GTK2
+hotkey.key01 "Ctrl f" 0 0 find
+hotkey.key02 "Ctrl o" 0 0 open_files
+hotkey.key03 "Ctrl q" 0 0 quit
+hotkey.key04 "Ctrl n" 0 0 new_playlist
+hotkey.key05 "Ctrl a" 0 0 select_all
+hotkey.key06 "Escape" 0 0 deselect_all
+hotkey.key07 "Ctrl m" 0 0 toggle_stop_after_current
+hotkey.key08 "Ctrl j" 0 0 jump_to_current_track
+hotkey.key09 "F1" 0 0 help
+hotkey.key10 "Delete" 1 0 remove_from_playlist
+hotkey.key11 "Ctrl w" 0 0 remove_current_playlist
+hotkey.key12 "Return" 0 0 play
+hotkey.key13 "Ctrl p" 0 0 toggle_pause
+hotkey.key14 "Alt 1" 0 0 playlist1
+hotkey.key15 "Alt 2" 0 0 playlist2
+hotkey.key16 "Alt 3" 0 0 playlist3
+hotkey.key17 "Alt 4" 0 0 playlist4
+hotkey.key18 "Alt 5" 0 0 playlist5
+hotkey.key19 "Alt 6" 0 0 playlist6
+hotkey.key20 "Alt 7" 0 0 playlist7
+hotkey.key21 "Alt 8" 0 0 playlist8
+hotkey.key22 "Alt 9" 0 0 playlist9
+hotkey.key23 "Alt 0" 0 0 playlist10
+hotkey.key24 "z" 0 0 prev
+hotkey.key25 "x" 0 0 play
+hotkey.key26 "c" 0 0 toggle_pause
+hotkey.key27 "v" 0 0 stop
+hotkey.key28 "b" 0 0 next
+hotkey.key29 "n" 0 0 playback_random
+hotkey.key30 "Ctrl k" 0 0 toggle_stop_after_album
+hotkey.key31 "Ctrl Right" 0 1 next
+hotkey.key32 "Ctrl Left" 0 1 prev
+hotkey.key33 "Ctrl Down" 0 1 play_pause
+hotkey.key34 "Ctrl Up" 0 1 toggle_player_window
+hotkeys_created 1
+ignore_archives 1
+junk.enable_cp1251_detection 1
+lastfm.disable_np 0
+lastfm.enable 1
+lastfm.login your_login_acutally
+lastfm.mbid 0
+lastfm.password your_password_actually
+lastfm.prefer_album_artist 1
+lastfm.scrobbler_url http://post.audioscrobbler.com
+lastfm.submit_tiny_tracks 0
+mainwin.geometry.h 558
+mainwin.geometry.maximized 0
+mainwin.geometry.w 905
+mainwin.geometry.x 229
+mainwin.geometry.y 60
+network.http_user_agent deadbeef
+network.proxy.port 8080
+network.proxy.type HTTP
+notify.albumart 1
+notify.albumart_size 64
+notify.enable 1
+notify.format %t
+notify.format_content %a - %b
+playback.loop 0
+playback.order 2
+playback.volume 0.0000000
+playlist.column.00 "♫" "" 1 29 0
+playlist.column.01 "Album Art" "" 8 37 0
+playlist.column.02 "Title" "%t" -1 164 0
+playlist.column.03 "Artist / Album" "%a - %b" -1 384 0
+playlist.column.04 "Duration" "%l" -1 43 0
+playlist.current 2
+playlist.cursor.0 6
+playlist.cursor.1 27
+playlist.cursor.2 0
+playlist.group_by %a - [%y] %b
+playlist.scroll.0 360
+playlist.scroll.1 1014
+playlist.scroll.2 0
+playlist.scroll.cursorfollowplayback 1
+playlist.stop_after_album_reset 1
+playlist.stop_after_current_reset 1
+playlist.tab.00000 Chris Rea - Studio
+playlist.tab.00001 Chris Rea - The Best
+playlist.tab.00002 Dire Straits 2008 - Greatest Hits (2 CD)
+prefwin.geometry.h 474
+prefwin.geometry.w 664
+prefwin.geometry.x 346
+prefwin.geometry.y 100
+replaygain_mode 0
+replaygain_scale 1
+resume.paused 0
+resume.playlist 1
+resume.position -1.000000
+resume.track -1
+resume_last_session 1
+streamer.8_to_16 1
