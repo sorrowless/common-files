@@ -1,0 +1,12 @@
+[core]
+	editor = vim
+[alias]
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	last5 = log -5 --oneline --decorate
+	last15 = log -15 --oneline --decorate
+	last30 = log -30 --oneline --decorate
+	logall = log --oneline --decorate --graph --all
+    files = show --pretty="format:" --name-only -r
+	br = branch -va
+	co = checkout
