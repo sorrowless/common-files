@@ -1,6 +1,7 @@
 import sys
 import time
 
+
 for i in range(101):
     print('\rPrepare ... [%d%%]' % i, end='')
     time.sleep(0.005)
