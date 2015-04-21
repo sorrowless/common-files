@@ -106,6 +106,7 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias feh='feh -x -F -Y'
+alias fuck='sudo $(fc -ln -1)'
 
 # VirtualenvWrapper
 export WORKON_HOME=~/.virtualenvs
