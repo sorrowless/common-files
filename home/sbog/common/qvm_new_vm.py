@@ -33,9 +33,6 @@ OPTS = "-M pc-i440fx-2.1 -enable-kvm -m {memory} -smp 2".format(memory=args.memo
 # "normal" qemu drive on the host side, and it is exposed to the guest as a
 # persistent flash device.
 if uefi:
-  if not os.path.isfile(uefipath):
-    print('You need uefi firmware in place first.')
-    sys.exit()
   OPTS += " -drive if=pflash,format=raw,file={uefipath}".format(uefipath=args.uefi_path)
 
 # The hard disk is exposed to the guest as a virtio-block device. OVMF has a
