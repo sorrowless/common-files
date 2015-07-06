@@ -1,0 +1,43 @@
+# reset escape key to the default
+escape ^Aa
+
+# auxiliary register
+register S ^A
+
+# Alt + x produces ^A and acts as an escape key
+bindkey "^[x" process S
+
+## Alt + space produces ^A and acts as an escape key
+# bindkey "^[ " process S
+
+## Alt + space produces ^A and acts as an escape key
+bindkey "^[a" process S
+
+# Use bash
+shell /usr/bin/zsh
+
+# Big scrollback
+defscrollback 1024
+
+# No annoying startup message
+startup_message off
+
+# Display the status line
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.kW}%-w%{.bW}%t [%n]%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c"
+
+# Setup screens
+screen -t 'repos' 0 zsh
+screen -t 'local' 1 zsh
+screen -t 'ssh01' 2 zsh
+screen -t 'ssh02' 3 zsh
+screen -t 'extra' 4 zsh
+screen -t 'extra2' 5 zsh
+screen -t 'extra3' 6 zsh
+screen -t 'extra4' 7 zsh
+screen -t 'vpn' 8 zsh
+screen -t 'root' 9 zsh
+
+# Switch to the first screen
+select 0
