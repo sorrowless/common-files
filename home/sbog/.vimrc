@@ -115,3 +115,11 @@ set foldlevel=1 " Первый уровень вложенности откры�
 
 " Auto remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
+
+" highlight symbols after 80
+set t_Co=256
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+set colorcolumn=80
+" it will work only if your terminal supports 256 colors properly
+highlight ColorColumn ctermbg=233

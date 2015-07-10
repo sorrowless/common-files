@@ -1,3 +1,7 @@
+term "screen-256color"
+attrcolor b ".I"
+defbce "on"
+
 # reset escape key to the default
 escape ^Aa
 

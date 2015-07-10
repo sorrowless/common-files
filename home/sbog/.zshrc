@@ -113,3 +113,6 @@ alias fuck='sudo $(fc -ln -1)'
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 #unset GREP_OPTIONS
+
+# set 256 colors for terminal
+export TERM=xterm-256color
