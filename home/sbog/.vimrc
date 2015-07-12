@@ -12,12 +12,15 @@ set softtabstop=2
 " Be smart when using tabs ;)
 set smarttab
 
-" Linebreak on 500 character
-" set lbr
-" set tw=80
+" Wrap lines explicitly
+"set wrap
+" and set a newline after 80 characters
+"set tw=80
+" and linebreak only at characters in breakat
+"set linebreak
+
 set autoindent " ai - Auto indent - copy indentation from previous line
 set smartindent " si - Smart indent - insert one more indent in some cases
-" set wrap "Wrap lines
 
 set encoding=utf-8
 
@@ -62,7 +65,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
-colorscheme darkblue
+"colorscheme darkblue
+colorscheme desert
 
 syntax on " highlight syntax
 filetype on
@@ -120,6 +124,25 @@ autocmd BufWritePre * :%s/\s\+$//e
 set t_Co=256
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" add line that show you 80 chars border
 set colorcolumn=80
 " it will work only if your terminal supports 256 colors properly
 highlight ColorColumn ctermbg=233
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving and quit
+nmap <leader>w :w!<cr>
+
+" Fast quit
+nmap <leader>q :q!<cr>
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
