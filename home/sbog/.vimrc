@@ -146,3 +146,9 @@ nmap <leader>q :q!<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" set W to be 'sudo w'
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" Wq is ok
+command! Wq wq
