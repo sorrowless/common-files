@@ -11,9 +11,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+map <C-n> :NERDTreeToggle<CR>
 
 " No compatible with vi
 "set nocompatible
@@ -82,10 +85,10 @@ set novisualbell
 set t_vb=
 set tm=500
 
+syntax on " highlight syntax
 "colorscheme darkblue
 colorscheme desert
 
-syntax on " highlight syntax
 "filetype on
 filetype plugin on
 filetype indent on
@@ -113,7 +116,7 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
+"nnoremap <C-n> :call NumberToggle()<cr>
 
 " Set relative number lines
 set relativenumber
