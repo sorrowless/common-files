@@ -12,14 +12,39 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'rodjek/vim-puppet'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" NerdTree plugin settings
 map <C-n> :NERDTreeToggle<CR>
+
+" syntastic plugin settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_puppet_checkers = [ 'puppet', 'puppetlint' ]
+
+" ctrlp plugin settings
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 
 " No compatible with vi
 "set nocompatible
+
+" help with backspace
+set backspace=indent,eol,start
 
 " Use spaces instead of tabs
 set expandtab
