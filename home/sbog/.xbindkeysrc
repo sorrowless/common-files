@@ -1,0 +1,6 @@
+# Mimic Mac cmd behavior
+"xvkbd -xsendevent -text '\[Control_L]\[Insert]'"
+Alt + c
+
+"xvkbd -xsendevent -text '\[Shift]\[Insert]'"
+Alt + v
