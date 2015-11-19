@@ -4,3 +4,12 @@ Alt + c
 
 "xvkbd -xsendevent -text '\[Shift]\[Insert]'"
 Alt + v
+
+"xvkbd -xsendevent -text '\[Control_L]t'"
+Alt + t
+
+"xvkbd -xsendevent -text '\[Control_L]w'"
+Alt + w
+
+#"xvkbd -xsendevent -text '\[Control_L]a'"
+#Alt + a
