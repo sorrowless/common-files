@@ -11,5 +11,8 @@ Alt + t
 "xvkbd -xsendevent -text '\[Control_L]w'"
 Alt + w
 
-#"xvkbd -xsendevent -text '\[Control_L]a'"
-#Alt + a
+"xvkbd -xsendevent -text '\[Control_L]r'"
+Alt + r
+
+"xvkbd -xsendevent -text '\[Control_L]f'"
+Alt + f
