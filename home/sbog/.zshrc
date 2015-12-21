@@ -1,3 +1,4 @@
+bindkey -v
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -76,11 +77,21 @@ function gitbranch {
     # and test that it is not null. If not null - then print it.
     [ $ret ] && echo "%{$fg[white]%}on git branch%{$reset_color%} [%{$fg[red]%}$ret%{$reset_color%}]%{$fg[white]%},%{$reset_color%}"
 }
+
 # it MUST be in singlequotes. Otherwise, promptsubst will not be working
 PROMPT='
 $(who_am_i) %{$fg[white]%}in%{$reset_color%} %{$fg_no_bold[cyan]%}%d%{$reset_color%}
 $(happy_sad) -> '
-RPS1='$(gitbranch) $(battshow)'
+# set right prompt side
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|)/} $(gitbranch) $(battshow)"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+bindkey 'ii' vi-cmd-mode
+bindkey ',,' insert-last-word
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
