@@ -14,6 +14,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'rodjek/vim-puppet'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,6 +33,8 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_puppet_checkers = [ 'puppet', 'puppetlint' ]
 
 " ctrlp plugin settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
@@ -39,6 +42,9 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
+
+" jedi-vim plugin settings
+let g:jedi#use_tabs_not_buffers = 1  " allow use tabs for goto jumps
 
 " No compatible with vi
 "set nocompatible
@@ -197,3 +203,14 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Wq is ok
 command! Wq wq
+
+" Map Alt+<number> to switch between tabs
+nmap 1 1gt
+nmap 2 2gt
+nmap 3 3gt
+nmap 4 4gt
+nmap 5 5gt
+nmap 6 6gt
+nmap 7 7gt
+nmap 8 8gt
+nmap 9 9gt
