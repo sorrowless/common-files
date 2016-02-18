@@ -1,30 +1,31 @@
 # Custom message on monitoring activity
-activity "Hey, man, there is something happened in window %n, look on it"
+activity "Hey, man, there is something happened in window %n (%t), look on it"
 
 # Don't leave strings from file on screen after exiting vim, emacs etc.
 altscreen on
 
-term "screen-256color"
-attrcolor b ".I"
-defbce "on"
-
 # reset escape key to the default
 escape ^Aa
 
-# auxiliary register
-register S ^A
+# Store hardcopies in home
+hardcopydir ~/.screen
 
-# Alt + x produces ^A and acts as an escape key
-bindkey "^[x" process S
-
-## Alt + space produces ^A and acts as an escape key
-# bindkey "^[ " process S
-
-## Alt + space produces ^A and acts as an escape key
-bindkey "^[a" process S
+# Keybindings
+# Rename current pane
+bind a title
+# Reload config
+bind r source ~/.screenrc
 
 # Use zsh
 shell /usr/bin/zsh
+
+# Manage silence monitoring
+silencewait 15
+
+# Other options
+term "screen-256color"
+attrcolor b ".I"
+defbce "on"
 
 # Big scrollback
 defscrollback 10240
@@ -45,6 +46,3 @@ screen 1
 
 # Switch to the first screen
 select 0
-
-# Store hardcopies in home
-hardcopydir ~/.screen
