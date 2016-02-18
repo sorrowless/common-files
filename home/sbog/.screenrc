@@ -1,3 +1,9 @@
+# Custom message on monitoring activity
+activity "Hey, man, there is something happened in window %n, look on it"
+
+# Don't leave strings from file on screen after exiting vim, emacs etc.
+altscreen on
+
 term "screen-256color"
 attrcolor b ".I"
 defbce "on"
@@ -17,11 +23,11 @@ bindkey "^[x" process S
 ## Alt + space produces ^A and acts as an escape key
 bindkey "^[a" process S
 
-# Use bash
+# Use zsh
 shell /usr/bin/zsh
 
 # Big scrollback
-defscrollback 1024
+defscrollback 10240
 
 # No annoying startup message
 startup_message off
@@ -32,16 +38,13 @@ hardstatus alwayslastline
 hardstatus string "%{.kW}%-w%{.bW}%t [%n]%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c"
 
 # Setup screens
-screen -t 'repos' 0 zsh
-screen -t 'local' 1 zsh
-screen -t 'ssh01' 2 zsh
-screen -t 'ssh02' 3 zsh
-screen -t 'extra' 4 zsh
-screen -t 'extra2' 5 zsh
-screen -t 'extra3' 6 zsh
-screen -t 'extra4' 7 zsh
-screen -t 'vpn' 8 zsh
-screen -t 'root' 9 zsh
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
 
 # Switch to the first screen
 select 0
+
+# Store hardcopies in home
+hardcopydir ~/.screen
