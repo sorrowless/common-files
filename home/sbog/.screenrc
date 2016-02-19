@@ -4,8 +4,17 @@ activity "Hey, man, there is something happened in window %n (%t), look on it"
 # Don't leave strings from file on screen after exiting vim, emacs etc.
 altscreen on
 
-# reset escape key to the default
+### Start remap escape to Alt+a
+# We can't just remap escape to Alt+a in screen, so workaround is needed
+## reset escape key to the default
 escape ^Aa
+
+## auxiliary register
+register S ^A
+
+## Alt + a produces ^A and acts as an escape key
+bindkey "^[a" process S
+### End remap escape to Alt+a
 
 # Store hardcopies in home
 hardcopydir ~/.screen
