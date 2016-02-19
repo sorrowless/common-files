@@ -26,13 +26,13 @@ bind a title
 bind r source ~/.screenrc
 
 # Use zsh
-shell /usr/bin/zsh
+shell -$SHELL
 
 # Manage silence monitoring
 silencewait 15
 
 # Other options
-term "screen-256color"
+term "xterm-256color"
 attrcolor b ".I"
 defbce "on"
 
