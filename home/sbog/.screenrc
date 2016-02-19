@@ -17,7 +17,7 @@ bindkey "^[a" process S
 ### End remap escape to Alt+a
 
 # Store hardcopies in home
-hardcopydir ~/.screen
+hardcopydir /tmp
 
 # Keybindings
 # Rename current pane
