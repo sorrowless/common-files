@@ -1,4 +1,3 @@
-bindkey -v
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -108,10 +107,13 @@ alias ip='ip -4 -o'
 alias du='du -hc'
 alias df='df -h'
 alias svim='sudo vim'
+alias scat='openssl x509 -text -noout -in'
 if command -v colordiff > /dev/null 2>&1; then
-    alias diff="colordiff -Nuar"
+    alias diff="colordiff -Nar"
+    alias diffy="colordiff -Nar -y --suppress-common-lines"
 else
-    alias diff="diff -Nuar"
+    alias diff="diff -Nar"
+    alias diffy="diff -Nar -y --suppress-common-lines"
 fi
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
@@ -119,6 +121,7 @@ alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias feh='feh -x -F -Y'
 # you know, that's funny ;)
 alias fuck='sudo $(fc -ln -1)'
+alias wttr='curl http://wttr.in/'
 
 # VirtualenvWrapper
 export WORKON_HOME=~/.virtualenvs
