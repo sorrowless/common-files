@@ -123,6 +123,9 @@ alias feh='feh -x -F -Y'
 alias fuck='sudo $(fc -ln -1)'
 alias wttr='curl http://wttr.in/'
 
+# Export specific variables for less
+export LESS='-sSCmqPm--Less--(?eEND:%pb\%.)'
+
 # VirtualenvWrapper
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
