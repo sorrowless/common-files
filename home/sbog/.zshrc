@@ -108,6 +108,8 @@ alias du='du -hc'
 alias df='df -h'
 alias svim='sudo vim'
 alias scat='openssl x509 -text -noout -in'
+alias sc='systemctl'
+alias sclu='systemctl list-units'
 if command -v colordiff > /dev/null 2>&1; then
     alias diff="colordiff -Nar"
     alias diffy="colordiff -Nar -y --suppress-common-lines"
@@ -119,12 +121,13 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias feh='feh -x -F -Y'
+alias less='less -S'
 # you know, that's funny ;)
 alias fuck='sudo $(fc -ln -1)'
 alias wttr='curl http://wttr.in/'
 
-# Export specific variables for less
-export LESS='-srSCmqPm--Less--(?eEND:%pb\%.)'
+# Export more specific variables for less
+# export LESS='-srSCmqPm--Less--(?eEND:%pb\%.)'
 
 # VirtualenvWrapper
 export WORKON_HOME=~/.virtualenvs
@@ -133,3 +136,27 @@ source /usr/bin/virtualenvwrapper.sh
 
 # set 256 colors for terminal
 export TERM=xterm-256color
+
+# SSH-related funcs
+check-ssh-agent() {
+  if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+    echo "ssh-agent not running, run it"
+    eval `ssh-agent`
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    echo "ran ssh-agent"
+  fi
+}
+
+check-ssh-add() {
+  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+  if ! ssh-add -l >/dev/null; then
+    ssh-add -t 8h
+    echo "Keys were added to an agent"
+  fi
+}
+
+ssh() {
+  check-ssh-agent
+  check-ssh-add
+  /usr/bin/ssh $@
+}
