@@ -23,3 +23,6 @@
   added = green
   changed = yellow
   untracked = cyan
+[user]
+	name = Stanislaw Bogatkin
+	email = sbogatkin@mirantis.com
