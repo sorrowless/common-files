@@ -1,5 +1,5 @@
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 autoload zkbd
 [[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
@@ -160,3 +160,6 @@ ssh() {
   check-ssh-add
   /usr/bin/ssh $@
 }
+
+# M-b and M-f (backward-word and forward-word) would jump over each word separated by a '/'
+export WORDCHARS='*?_[]~=&;!#$%^(){}'
