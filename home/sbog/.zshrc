@@ -1,6 +1,4 @@
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 export EDITOR="vim"
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Use zgen (https://github.com/tarjoilija/zgen.git) to manage plugins for zsh.
 # We try to automatically download it if it doesn't exists and also will auto
@@ -38,6 +36,7 @@ if [ -f "${ZGEN_FILE}" ] && [ "$RC" -eq 0 ]; then
 
     # Plugins list here
     zgen load marzocchi/zsh-notify
+    zgen load zsh-users/zsh-syntax-highlighting
 
     # Generate the init script from plugins above
     zgen save
@@ -55,17 +54,20 @@ fi
 
 autoload zkbd
 [[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
-[[ ! -f ~/.zkbd/xterm-:0.0 ]] && zkbd
-source  ~/.zkbd/xterm-:0.0
-#setup key accordingly
-[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
-[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
-[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
-[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
-[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+if [[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]]; then
+  zkbd
+else
+  source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+  #setup key accordingly
+  [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+  [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+  [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+  [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+  [[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+  [[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+  [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+  [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+fi
 
 # History options
 export HISTSIZE=2000
@@ -144,8 +146,6 @@ zle -N zle-keymap-select
 bindkey 'ii' vi-cmd-mode
 bindkey ',,' insert-last-word
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 alias cp='cp -iv'
 alias rcp='rsync -v --progress'
 alias rmv='rsync -v --progress --remove-source-files'
@@ -183,7 +183,11 @@ alias wttr='curl http://wttr.in/'
 
 # VirtualenvWrapper
 export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+  source /usr/bin/virtualenvwrapper.sh
+else
+  echo "virtualenvwrapper script for Python not found, skip load it"
+fi
 #unset GREP_OPTIONS
 
 # set 256 colors for terminal
