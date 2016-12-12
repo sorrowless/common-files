@@ -1,5 +1,57 @@
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export EDITOR="vim"
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# Use zgen (https://github.com/tarjoilija/zgen.git) to manage plugins for zsh.
+# We try to automatically download it if it doesn't exists and also will auto
+# apply it for current shell
+#
+# Export needed variables
+ZGEN_GHUB='https://github.com/tarjoilija/zgen.git'
+ZGEN_HOME="${HOME}/.zgen"
+ZGEN_FILE="${ZGEN_HOME}/zgen.zsh"
+RC=1
+#
+# Check if zgen directory exists, if not - install zgen
+if [ ! -d "${ZGEN_HOME}" ]; then
+  echo "zgen plugins manager directory ${ZGEN_HOME} not found, try to install zgen"
+  type git 1>/dev/null 2>&1
+  RC=$?
+  if [ "$RC" -ne 0 ]; then
+    echo "cannot find git, skip installing zgen"
+  else
+    git clone ${ZGEN_GHUB} ${ZGEN_HOME}
+    RC=$?
+    if [ "$RC" -ne 0 ]; then
+      echo "cannot clone zgen repository from ${ZGEN_GHUB}, skip installing zgen"
+    fi
+  fi
+else
+  RC=0
+fi
+if [ -f "${ZGEN_FILE}" ] && [ "$RC" -eq 0 ]; then
+  #
+  # Load zgen
+  source "${HOME}/.zgen/zgen.zsh"
+  # If the init scipt doesn't exist
+  if ! zgen saved; then
+
+    # Plugins list here
+    zgen load marzocchi/zsh-notify
+
+    # Generate the init script from plugins above
+    zgen save
+  fi
+
+  # Settings for zsh-notify plugin
+  zstyle ':notify:*' error-title Error
+  zstyle ':notify:*' success-title Success
+  zstyle ':notify:*' command-complete-timeout 5
+  # End settings for zsh-notify plugin
+else
+  echo "zgen plugins manager main file ${ZGEN_FILE} doesn't exists, skip plugins initialization"
+fi
+# End zgen plugins manager initialization
 
 autoload zkbd
 [[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
