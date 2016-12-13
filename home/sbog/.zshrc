@@ -155,7 +155,6 @@ alias rmdir='rmdir -v'
 alias ln='ln -v'
 alias chmod="chmod -c"
 alias chown="chown -c"
-alias ip='ip -4 -o'
 alias du='du -hc'
 alias df='df -h'
 alias svim='sudo vim'
@@ -171,7 +170,14 @@ else
 fi
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
-alias ls='ls --color=auto --human-readable --group-directories-first --classify'
+
+PLATFORM=`uname`
+if [ "${PLATFORM}" != "Darwin" ]; then
+  alias ls='ls --color=auto --human-readable --group-directories-first --classify'
+  alias ip='ip -4 -o'
+else
+  alias ls='ls -G'
+fi
 alias feh='feh -x -F -Y'
 alias less='less -S'
 # you know, that's funny ;)
